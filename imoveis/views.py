@@ -75,3 +75,29 @@ def deleteuser(request, id):
         usuario.delete()
         return redirect('/usuarios')
     
+
+def editcorretor(request, id):
+    corretor = Corretor.objects.filter().get(id=id)
+    
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        cpf= request.POST.get('cpf')
+        numero = request.POST.get('numero')
+
+        corretor.nome = nome
+        corretor.cpf = cpf
+        corretor.numero = numero
+
+        corretor.save()
+        return redirect('/view_corretores')
+    
+    else:
+        return render(request, 'editcorretor.html' ,{'corretor': corretor})
+    
+
+def deletecorretor(request, id):
+    corretor = Corretor.objects.filter().get(id=id)
+    
+    if request.method == 'GET':
+        corretor.delete()
+        return redirect('/view_corretores')

@@ -9,7 +9,7 @@
     <form action="{% url 'editar_usuario' usuario.id %}" method="POST" class="w-50"> 
         {% csrf_token %}
         <label>Nome</label>
-        <input type="text" class="form-control" placeholder="Digite aqui seu título" required name="nome"
+        <input type="text" class="form-control" placeholder="Ex: Fulano" required name="nome"
             value="{{usuario.nome}}">
         <br>
         <label class="form-label">email</label>

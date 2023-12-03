@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'editar_corretor' corretor.id %}" method="POST" class="w-50"> 
+        {% csrf_token %}
+        <label>Nome</label>
+        <input type="text" class="form-control" placeholder="Digite aqui seu nome" required name="nome"
+            value="{{corretor.nome}}">
+        <br>
+        <label class="form-label">Cpf</label>
+        <input type="text" value="{{corretor.cpf}}" required name="cpf">
+        <br>
+        <label>Numero de Telefone</label>
+        <input type='number' value="{{corretor.numero}}", required name="numero">
+        <br>
+        <input type="submit" class="btn bg-primary">
+    </form>
+</body>
+</html>

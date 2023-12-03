@@ -8,5 +8,8 @@ urlpatterns = [
     path('cadastro-de-corretores', views.corretorview),
     path('view_corretores', views.ver_corretores),
     path('editar_usuario/<int:id>/',  views.edituser, name='editar_usuario'),
-    path('deletar_usuario/<int:id>/', views.deleteuser, name='deletar_usuario')
+    path('deletar_usuario/<int:id>/', views.deleteuser, name='deletar_usuario'),
+    path('editar_corretor/<int:id>/',  views.editcorretor, name='editar_corretor'),
+    path('deletar_corretor/<int:id>/', views.deletecorretor, name='deletar_corretor'),
+
 ]
