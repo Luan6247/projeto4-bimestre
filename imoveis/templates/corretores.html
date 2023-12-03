@@ -32,8 +32,8 @@
                 <td>{{corretor.nome}}</td>
                 <td>{{corretor.cpf}}</td>
                 <td>{{corretor.numero}}</td>
-                <td><a href="{% url 'editar_corretor' corretor.id %}">Editar Usuário</a></td>
-                <td><a href= "{% url 'deletar_corretor' corretor.id %}">Deletar Usuário</a></td>
+                <td><a href="{% url 'editar_corretor' corretor.id %}">Editar Corretor</a></td>
+                <td><a href= "{% url 'deletar_corretor' corretor.id %}"> Deletar Corretor</a></td>
             </tr>
             {% endfor %}
         </table>

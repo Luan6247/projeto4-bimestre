@@ -6,10 +6,10 @@ class Imovel(models.Model):
     proprietario = models.ForeignKey('Usuario', on_delete=models.DO_NOTHING)
     ContratoAluguel = models.ForeignKey('Contrato',  on_delete=models.CASCADE)
     imagem = models.CharField(max_length=255, null=True)
-    
+
     def __str__(self):
         return self.nome
-
+    
 class Usuario(models.Model):
     nome = models.CharField(max_length=255)
     email = models.CharField(max_length=150, null=True)
@@ -35,4 +35,4 @@ class Contrato(models.Model):
     corretor = models.ForeignKey('Corretor', on_delete=models.CASCADE)
     
     def __str__(self):
-        self.nome
+      return  self.nome

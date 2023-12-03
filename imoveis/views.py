@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Usuario, Corretor, Contrato
-from .forms import UsuarioForms , CorretorForms, ContratoForms
+from .models import Usuario, Corretor, Contrato, Imovel
+from .forms import UsuarioForms , CorretorForms, ContratoForms, ImovelForms
 
 def login(request):
     return render(request, 'login.html')
@@ -149,3 +149,52 @@ def deletecontrato(request, id):
     if request.method == 'GET':
         contrato.delete()
         return redirect('/contrato')
+    
+
+def imovel(request):
+    imoveis = Imovel.objects.all()
+    return render(request, 'imovel.html', {'Imoveis': imoveis})
+
+
+def novo_imovel(request):
+    if request.method == 'GET': # Se o usuário estiver apenas acessando a url
+        form = ImovelForms()
+        return render(request, 'novoimovel.html', {'form' : form})
+    
+    if request.method == 'POST': # Se o usuárioj estiver enviando um formulário
+        form = ImovelForms(request.POST)
+        
+        if form.is_valid(): # Se o formulário for válido
+            form.save()
+            return redirect('/imovel')
+        
+
+def editimovel(request, id):
+    imovel = Imovel.objects.filter().get(id=id)
+
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        endereco = request.POST.get('endereco')
+        imagem = request.POST.get('imagem')
+
+
+
+        imovel.nome = nome
+        imovel.endereco = endereco
+        imovel.imagem = imagem
+
+        imovel.save()
+        return redirect('/imovel')
+    
+    else:
+        return render(request, 'editimovel.html' ,{'imovel': imovel})
+
+
+
+def deleteimovel(request, id):
+    imovel = Imovel.objects.filter().get(id=id)
+
+    if request.method == 'GET':
+        imovel.delete()
+        return redirect('/imovel')
+    
