@@ -30,7 +30,7 @@ class Contrato(models.Model):
     nome = models.CharField(max_length=255, blank=False, null=True)
     tipo_contrato = models.CharField(max_length = 255, choices = [("aluguel", "aluguel"), ("Venda", "Venda")])
     data = models.DateField()
-    valor = models.DecimalField(max_digits=19, decimal_places=10)
+    valor = models.DecimalField(max_digits=19, decimal_places=2)
     cliente = models.ForeignKey('Usuario', on_delete=models.DO_NOTHING)
     corretor = models.ForeignKey('Corretor', on_delete=models.CASCADE)
     

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Usuario, Corretor
+from .models import Usuario, Corretor, Contrato
 
 class UsuarioForms(ModelForm): # Formulário gerado automaticamente.
     class Meta:
@@ -13,3 +13,7 @@ class CorretorForms(ModelForm): # Formulário gerado automaticamente.
         fields = ['nome', 'cpf', 'numero']
 
 
+class ContratoForms(ModelForm):
+    class Meta:
+        model = Contrato
+        fields = ['nome', 'tipo_contrato', 'data', 'valor', 'cliente', 'corretor' ]

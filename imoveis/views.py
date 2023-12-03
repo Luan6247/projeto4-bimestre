@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Usuario, Corretor
-from .forms import UsuarioForms , CorretorForms
+from .models import Usuario, Corretor, Contrato
+from .forms import UsuarioForms , CorretorForms, ContratoForms
 
 def login(request):
     return render(request, 'login.html')
@@ -101,3 +101,51 @@ def deletecorretor(request, id):
     if request.method == 'GET':
         corretor.delete()
         return redirect('/view_corretores')
+    
+
+def contrato(request):
+    contratos = Contrato.objects.all()
+    return render(request, 'contrato.html', {'contratos': contratos})
+
+
+
+def novo_contrato(request):
+    if request.method == 'GET': # Se o usuário estiver apenas acessando a url
+        form = ContratoForms()
+        return render(request, 'novocontrato.html', {'form' : form})
+    
+    if request.method == 'POST': # Se o usuárioj estiver enviando um formulário
+        form = ContratoForms(request.POST)
+        
+        if form.is_valid(): # Se o formulário for válido
+            form.save()
+            return redirect('/contrato') # Redireciona para a página principal
+
+
+
+def editcontrato(request, id):
+    contrato = Contrato.objects.filter().get(id=id)
+    
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        data = request.POST.get('data')
+        valor = request.POST.get('valor')
+
+
+        contrato.nome = nome
+        contrato.data = data
+        contrato.valor = valor
+
+        contrato.save()
+        return redirect('/contrato')
+    
+    else:
+        return render(request, 'editcontrato.html' ,{'contrato': contrato})
+
+
+def deletecontrato(request, id):
+    contrato = Contrato.objects.filter().get(id=id)
+    
+    if request.method == 'GET':
+        contrato.delete()
+        return redirect('/contrato')
