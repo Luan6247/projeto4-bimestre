@@ -13,7 +13,7 @@
   <body>
     <nav style = "background-color: aquamarine !important;" class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Usuários</span>
+        <span class="navbar-brand mb-0 h1">Corretores</span>
       </div>
     </nav>
     <div class = "container">
@@ -21,19 +21,19 @@
             <tr>
                 <th>id</th>
                 <th>nome</th>
-                <th>idade</th>
-                <th>Email</th>
+                <th>cpf</th>
+                <th>Numero de Telefone</th>
                 <th>Editar</th>
                 <th>Deletar</th>
             </tr>
-            {% for usuario in usuarios %}
+            {% for corretor in corretores %}
             <tr>
-                <td>{{usuario.id}}</td>
-                <td>{{usuario.nome}}</td>
-                <td>{{usuario.idade}}</td>
-                <td>{{usuario.email}}</td>
-                <td><a href="{% url 'editar_usuario' usuario.id %}">Editar Usuário</a></td>
-                <td><a href= "{% url 'deletar_usuario' usuario.id %}">Deletar Usuário</a></td>
+                <td>{{corretor.id}}</td>
+                <td>{{corretor.nome}}</td>
+                <td>{{corretor.cpf}}</td>
+                <td>{{corretor.numero}}</td>
+                <td><a href="{% url 'editar_corretor' corretor.id %}">Editar Corretor</a></td>
+                <td><a href= "{% url 'deletar_corretor' corretor.id %}"> Deletar Corretor</a></td>
             </tr>
             {% endfor %}
         </table>

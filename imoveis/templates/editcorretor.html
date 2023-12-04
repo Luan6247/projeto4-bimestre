@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'editar_corretor' corretor.id %}" method="POST" class="w-50"> 
+        {% csrf_token %}
+        <label>Nome</label>
+        <input type="text" class="form-control" placeholder="Digite aqui seu nome" required name="nome"
+            value="{{corretor.nome}}">
+        <br>
+        <label class="form-label">Cpf</label>
+        <input type="text" value="{{corretor.cpf}}" required name="cpf">
+        <br>
+        <label>Numero de Telefone</label>
+        <input type='number' value="{{corretor.numero}}", required name="numero">
+        <br>
+        <input type="submit" class="btn bg-primary">
+    </form>
+</body>
+</html>

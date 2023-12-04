@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imovel</title>
+</head>
+<body>
+    {% for imovel in Imoveis %}
+    <div class="card" style='width: 18rem; display: grid; grid-template-columns: repeat(3,auto)'>
+        <div class="card-body" style="margin-bottom: 25px;"> 
+            <img src="{{imovel.imagem}}" style="width: 250px; height: 250px;">
+            <p class="card-subtitle mb-2 text-muted">Nome: {{imovel.nome}}</p>
+            <p class="card-text">Endereço: {{imovel.endereco}}</p>
+            <p class="card-text">Proprietário: {{imovel.proprietario}}</p>
+            <p class="card-text">Contrato: {{imovel.ContratoAluguel}}</p>
+            <a href="{% url 'editar_imovel' imovel.id %}" class="card-link">Editar Imovel</a>
+            <a href= "{% url 'deletar_imovel' imovel.id %}" class="card-link">Deletar Imovel</a></div>
+    </div>
+    {% endfor %}
+    <button onclick = "location.href = 'novo_imovel'">Novo imovel</button>
+    <button onclick = "location.href = '/'" >Voltar</button>
+</body>
+</html>
